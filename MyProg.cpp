@@ -1,3 +1,9 @@
+/*
+Assignment 5 Arrays
+Krzysztof Szczurowski 
+A01013054
+October 23rd 2019
+*/
 #include<iostream>
 #include<array>
 #include <iomanip>
@@ -7,7 +13,6 @@ using namespace std;
 
 int main() 
 {
-
 	const int arraySize = 5;
 	int myData[arraySize] = {0,0,0,0,0};
 	int input, insert;
