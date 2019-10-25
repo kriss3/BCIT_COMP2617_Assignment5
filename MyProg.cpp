@@ -7,73 +7,62 @@ October 23rd 2019
 #include<iostream>
 #include<array>
 #include <iomanip>
-
-
 using namespace std;
+
+bool isUnique(int val, int myData[], int size);
 
 int main() 
 {
-	const int arraySize = 5;
-	int myData[arraySize] = {0,0,0,0,0};
-	int input, insert;
+	const int arraySize = 20;
+	//TODO: initialize in a loop
+	int myData[arraySize] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+	int input;
 	int count = 0;
+	int counter = 1;
 
 	int index = 0; // index into data[]
 
-	cout << "Enter 5 unique numbers between 10 and 100: ";
-
 	while (count != arraySize) 
 	{
+		cout << "Enter # " << counter << ": ";
 		cin >> input;
 
-		if (input < 10 || input > 100) {
-			cout << "Invalid input. Try again." << endl;
+		if (input < 10 || input > 100) 
+		{
+			cout << "The number entered is not in the valid range of 10 to 100" << endl;
 			continue;  // looping until user inputs valid number
 		}
 
-		for (index = 0; index < arraySize; index++) {
-			if (myData[index] == input)
-				break; // found duplicate, complain
+		if (!isUnique(input, myData, arraySize)) 
+		{
+			counter++;
+			continue;
 		}
 
-		if (index != arraySize) {
-			cout << "Duplicate value. Try again" << endl;
-			continue;  // looping until user inputs valid number
-		}
-
+		cout << "This number:  " << input << " is unique." << endl;
+		counter++;
 		myData[count++] = input; // copy unique valid number to array
 	}
 
-	//Display Unsorted Array 
-	cout << "Unsorted array:" << endl;
-
+	//Display myData array 
 	for (int i = 0; i < arraySize; i++)
 	{
 		cout << setw(4) << myData[i];
 	}
-
-	cout << endl;
-
-	//insertion sort 
-	for (int next = 1; next < arraySize; next++)
-	{
-		insert = myData[next];
-
-		int moveItem = next;
-
-		while ((moveItem > 0) && (myData[moveItem - 1] < insert))
-		{
-			myData[moveItem] = myData[moveItem - 1];
-			moveItem--;
-		}
-		myData[moveItem] = insert;
-	}
-	cout << endl << "Sorted Array: " << endl;
-
-	for (int i = 0; i < arraySize; i++)
-		cout << setw(4) << myData[i];
-
-	cout << endl;
 
 	return 0;
+}
+
+bool isUnique(int val, int myData[], int size)
+{
+	bool unique = true;
+
+	for (int index = 0; index < size; index++)
+	{
+		if (myData[index] == val)
+		{
+			unique = false;
+		} // found duplicate, break and continue collecting user input;
+	}
+	return unique;
 }
