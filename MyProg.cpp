@@ -13,15 +13,15 @@ bool isUnique(int val, int myData[], int size);
 
 int main() 
 {
-	const int arraySize = 20;
-	int myData[arraySize] = {0};
+	const int collSize = 20;
+	int myData[collSize] = {0};	// unique collection of int values;
 	int input;
 	int count = 0;
 	int counter = 1;
 
-	int index = 0; // index of myData[] array
+	int index = 0; // index of myData[] collection;
 		
-	while (count != arraySize) 
+	while (count != collSize)
 	{
 		cout << "Enter # " << counter << ": ";
 		cin >> input;
@@ -29,10 +29,11 @@ int main()
 		if (input < 10 || input > 100) 
 		{
 			cout << "The number entered is not in the valid range of 10 to 100" << endl;
-			continue;  // looping until user inputs valid number
+			continue; 
 		}
 
-		if (!isUnique(input, myData, arraySize)) 
+		// function call to return info whether a new value in Tests is a unique value or not;
+		if (!isUnique(input, myData, collSize))  
 		{
 			counter++;
 			continue;
@@ -40,11 +41,11 @@ int main()
 
 		cout << "This number:  " << input << " is unique." << endl;
 		counter++;
-		myData[count++] = input; // copy unique valid number to array
+		myData[count++] = input; // add unique number to myData array;
 	}
 
 	//Display myData array 
-	for (int i = 0; i < arraySize; i++)
+	for (int i = 0; i < collSize; i++)
 	{
 		cout << setw(4) << myData[i];
 	}
@@ -57,14 +58,14 @@ int main()
 //returns: true: val is unique, false: value already exists in the given array;
 bool isUnique(int val, int myData[], int size)
 {
-	bool unique = true;
+	bool unique = true; // setting initial value of local unique variable;
 
 	for (int index = 0; index < size; index++)
 	{
 		if (myData[index] == val)
 		{
 			unique = false;
-		} // found duplicate, break and continue collecting user input;
+		} // found a duplicate, assigns false to unique variable;
 	}
 	return unique;
 }
