@@ -14,14 +14,13 @@ bool isUnique(int val, int myData[], int size);
 int main() 
 {
 	const int arraySize = 20;
-	//TODO: initialize in a loop
-	int myData[arraySize] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+	int myData[arraySize] = {0};
 	int input;
 	int count = 0;
 	int counter = 1;
 
-	int index = 0; // index into data[]
-
+	int index = 0; // index of myData[] array
+		
 	while (count != arraySize) 
 	{
 		cout << "Enter # " << counter << ": ";
@@ -53,6 +52,9 @@ int main()
 	return 0;
 }
 
+//returns informaiton whether passed in val is a unique number within the given array;
+//takes: val : value to test, myData : reference to array with existing values, size: site of the array;
+//returns: true: val is unique, false: value already exists in the given array;
 bool isUnique(int val, int myData[], int size)
 {
 	bool unique = true;
