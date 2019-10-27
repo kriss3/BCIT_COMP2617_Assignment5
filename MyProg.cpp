@@ -9,10 +9,15 @@ October 23rd 2019
 #include <iomanip>
 using namespace std;
 
+//function to test value under test whether it is unique or not;
 bool isUnique(int val, int myData[], int size);
+void arrayDisplay(int myData[], int arrSize, int collNumber);
+
+const int COLLUMN_NUMBER = 4;
 
 int main() 
 {
+	
 	const int collSize = 20;
 	int myData[collSize] = {0};	// unique collection of int values;
 	int input;
@@ -35,21 +40,24 @@ int main()
 		// function call to return info whether a new value in Tests is a unique value or not;
 		if (!isUnique(input, myData, collSize))  
 		{
+			count++;
 			counter++;
 			continue;
 		}
 
+		//Throw confirmation message to the user and store val to myData array;
 		cout << "This number:  " << input << " is unique." << endl;
 		counter++;
-		myData[count++] = input; // add unique number to myData array;
+		// store unique value under test into myData array
+		myData[count++] = input;
 	}
 
-	//Display myData array 
-	for (int i = 0; i < collSize; i++)
-	{
-		cout << setw(4) << myData[i];
-	}
+	//Display collection of unique int stored in myData;
+	cout << "The uniqe numbers are: " << endl;
+	arrayDisplay(myData, collSize,  COLLUMN_NUMBER);
 
+	
+	
 	return 0;
 }
 
@@ -68,4 +76,22 @@ bool isUnique(int val, int myData[], int size)
 		} // found a duplicate, assigns false to unique variable;
 	}
 	return unique;
+}
+
+void arrayDisplay(int myData[], int collSize, int collNumber) 
+{
+	int myColumns = collNumber;
+	for (int i = 0; i < collSize; i++)
+	{
+		if (myData[i] > 0)			// display only unique, populated values (exclude default)
+		{
+			if (myColumns < 1)	// check for formatting only;
+			{
+				cout << endl;
+				myColumns = collNumber;
+			}
+			cout << setw(4) << myData[i];
+			myColumns--;
+		}
+	}
 }
