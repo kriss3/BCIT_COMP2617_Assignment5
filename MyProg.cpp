@@ -2,6 +2,9 @@
 Assignment 5 Arrays
 Krzysztof Szczurowski 
 A01013054
+Initial implementation using C-Style arrays;
+After successfull tests, switched to C++11 arrays; 
+Commented out declarations of C-Style arrays for historical purposes;
 October 23rd 2019
 */
 #include<iostream>
